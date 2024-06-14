@@ -31,9 +31,9 @@ namespace TechJobs6Persistent.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            AddEmployerViewModel addEmployerViewModel = new AddEmployerViewModel();
+            Employer employer = new Employer();
 
-            return View("create", addEmployerViewModel);
+            return View("create", employer);
         }
 
         [HttpPost]
@@ -48,9 +48,9 @@ namespace TechJobs6Persistent.Controllers
                 };
                 context.Employers.Add(newEmployer);
                 context.SaveChanges();
-                return Redirect("/employer")
-            }
-            return View(addEmployerViewModel);
+                return Redirect("index");
+            };
+            return View("index");
         }
 
         public IActionResult About(int id)
