@@ -31,12 +31,13 @@ namespace TechJobs6Persistent.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            Employer employer = new Employer();
+            // Employer employer = new Employer();
+            AddEmployerViewModel addEmployerViewModel = new();
 
-            return View("create", employer);
+            return View("create", addEmployerViewModel);
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public IActionResult ProcessCreateEmployerForm(AddEmployerViewModel addEmployerViewModel)
         {
             if (ModelState.IsValid)
@@ -48,9 +49,9 @@ namespace TechJobs6Persistent.Controllers
                 };
                 context.Employers.Add(newEmployer);
                 context.SaveChanges();
-                return Redirect("index");
+                return Redirect("/employer/index");
             };
-            return View("index");
+            return View("create", addEmployerViewModel);
         }
 
         public IActionResult About(int id)

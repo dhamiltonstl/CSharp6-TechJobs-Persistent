@@ -18,5 +18,10 @@ namespace TechJobs6Persistent.Models
         public Employer()
         {
         }
+
+        public static implicit operator List<object>(Employer v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

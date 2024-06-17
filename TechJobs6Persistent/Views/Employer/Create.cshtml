@@ -1,5 +1,5 @@
-﻿@using TechJobs6Persistent.Models
-@model TechJobs6Persistent.Models.Employer
+﻿@using TechJobs6Persistent.ViewModels
+@model AddEmployerViewModel
 
 <h1>Add New Employer</h1>
 
@@ -15,7 +15,7 @@
 
     <div class="form-group">
         <label asp-for="Location">Employer Location</label>
-        <input asp-for="Name" class="form-control" />
+        <input asp-for="Location" class="form-control" />
         <span asp-validation-for="Location" class="text-danger"></span>
     </div>
 
