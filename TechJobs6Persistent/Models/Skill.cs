@@ -11,7 +11,7 @@ namespace TechJobs6Persistent.Models
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Name must be between 3 and 50 characters")]
         public string SkillName { get; set; }
 
-        public ICollection<Job>? Jobs { get; set; }
+        public ICollection<Job> Jobs { get; set; }
 
         public Skill(string name)
         {

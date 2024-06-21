@@ -14,7 +14,7 @@ namespace TechJobs6Persistent.Controllers
 {
     public class JobController : Controller
     {
-        private JobDbContext context;
+        private JobDbContext? context;
 
         public JobController(JobDbContext dbContext)
         {
@@ -31,14 +31,27 @@ namespace TechJobs6Persistent.Controllers
 
         public IActionResult Add()
         {
-            AddJobViewModel addJobViewModel = new AddJobViewModel();
-            return View(addJobViewModel);
+            Console.WriteLine("HIT");
+            List<Employer> employers = context.Employers.ToList();
+            AddJobViewModel addJobViewModel = new AddJobViewModel(employers);
+            return View("add", addJobViewModel);
         }
 
-        [HttpPost]
-        public IActionResult ProcessAddJobForm()
+        [HttpPost("/add")]
+        public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Job newJob = new Job
+                {
+                    Name = addJobViewModel.Name,
+                    EmployerId = addJobViewModel.EmployerId
+                };
+                context.Jobs.Add(newJob);
+                context.SaveChanges();
+                return Redirect("/");
+            }
+            return View("add", addJobViewModel);
         }
 
         public IActionResult Delete()
