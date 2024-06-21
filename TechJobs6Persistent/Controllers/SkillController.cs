@@ -38,15 +38,16 @@ namespace TechJobs6Persistent.Controllers
         [HttpPost]
         public IActionResult Add(Skill skill)
         {
-            if (ModelState.IsValid)
-            {
-                context.Skills.Add(skill);
-                context.SaveChanges();
+            // if (ModelState.IsValid)
+            // {
+            Console.WriteLine("----------HIT----------");
+            context.Skills.Add(skill);
+            context.SaveChanges();
 
-                return Redirect("/Skill/");
-            }
+            return Redirect("/Skill/");
+            // }
 
-            return View("Add", skill);
+            // return View("Add", skill);
         }
 
         [HttpGet]
