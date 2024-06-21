@@ -8,8 +8,8 @@
 <form asp-controller="Job" asp-action="ProcessAddJobForm" method="POST">
     <div class="form-group">
         <label asp-for="Name">Name</label>
-        <input asp-for="Name" class="form-control" />
-        <span></span>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <br />
     <div class="form-group">
